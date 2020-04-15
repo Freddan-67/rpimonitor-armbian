@@ -3,6 +3,7 @@
 sudo apt -y install perl libhttp-daemon-perl libjson-perl libsnmp-extension-passpersist-perl librrds-perl libfile-which-perl 
 
 sudo apt -y install libencode-locale-perl liblwp-mediatypes-perl libio-html-perl liburi-perl
+sudo apt -y install libipc-sharelite-perl aptitude
 #The logo file goes to web directory
 #in my case  /usr/share/rpimonitor/web/img/
 sudo cp orange_pi_logo.png /usr/share/rpimonitor/web/img

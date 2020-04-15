@@ -1,5 +1,8 @@
 #!/bin/bash
-find /sys/devices/platform  -name microvolts -print  > microvolt.data 
+# on raspberry /sys/devices/platform
+# on armbian /sys/devices/platform
+# on nvidia-jetson /sys/devices/regulators and /sys/devices/pwm_regulators and /sys/devices/7000d000.i2c
+find /sys/devices  -name microvolts -print  > microvolt.data 
 echo "#!/bin/bash"
 echo "#autocreated by microvolt-create.sh"
 input="microvolt.data"

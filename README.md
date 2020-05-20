@@ -52,10 +52,10 @@ To get statistics from this added card, i comment out every line in /lib/udev/ru
 #ENV{net.ifnames}=="0", GOTO="usb_net_by_mac_end"
 
 #SUBSYSTEMS=="usb", NAME=="", \
-#    ATTR{address}=="?[014589cd]:*", \
-#    TEST!="/etc/udev/rules.d/80-net-setup-link.rules", \
-#    TEST!="/etc/systemd/network/99-default.link", \
-#    IMPORT{builtin}="net_id", NAME="$env{ID_NET_NAME_MAC}"
+#ATTR{address}=="?[014589cd]:*", \
+#TEST!="/etc/udev/rules.d/80-net-setup-link.rules", \
+#TEST!="/etc/systemd/network/99-default.link", \
+#IMPORT{builtin}="net_id", NAME="$env{ID_NET_NAME_MAC}"
 #LABEL="usb_net_by_mac_end"
 
 

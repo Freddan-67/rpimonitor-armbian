@@ -35,6 +35,29 @@ Comparing the output of this debug file to the freqcuencies of the processor gav
 
 Orange Pi Prime
 For Orange Pi Prime there is one regulator (was named regulator 5, name replaced to regulator 4)
+Also the wifi network is unstable due to unstable driver. I have an USB network card added.
+To get statistics from this added card, i comment out every line in /lib/udev/rules/73-usb-net-by-mac.rules
+
+#Use MAC based names for network interfaces which are directly or indirectly
+#on USB and have an universally administered (stable) MAC address (second bit
+#is 0). Don't do this when ifnames is disabled via kernel command line or
+#customizing/disabling 99-default.link (or previously 80-net-setup-link.rules)
+#or if the interface name was provided by user-space.
+
+#ACTION=="remove", GOTO="usb_net_by_mac_end"
+#SUBSYSTEM!="net", GOTO="usb_net_by_mac_end"
+#ATTR{name_assign_type}=="3", GOTO="usb_net_by_mac_end"
+
+#IMPORT{cmdline}="net.ifnames"
+#ENV{net.ifnames}=="0", GOTO="usb_net_by_mac_end"
+
+#SUBSYSTEMS=="usb", NAME=="", \
+#    ATTR{address}=="?[014589cd]:*", \
+#    TEST!="/etc/udev/rules.d/80-net-setup-link.rules", \
+#    TEST!="/etc/systemd/network/99-default.link", \
+#    IMPORT{builtin}="net_id", NAME="$env{ID_NET_NAME_MAC}"
+#LABEL="usb_net_by_mac_end"
+
 
 Orange Pi PC+
 For Orange Pi Pc+ there is on regulator, named regulator 5
